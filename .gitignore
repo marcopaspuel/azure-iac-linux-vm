@@ -33,3 +33,6 @@ override.tf.json
 
 # Azure Secrets
 .azure_envs.sh
+
+# Terraform Variables
+terraform.tfvars
