@@ -7,7 +7,6 @@ variable "tenant_id" {}
 # Resource Group/Location
 variable "location" {}
 variable "resource_group" {}
-variable "webapp_name" {}
 
 # Network
 variable virtual_network_name {}
@@ -15,6 +14,7 @@ variable "address_prefix_test" {}
 variable address_space {}
 
 # Virtual Machine
+variable "vm_name" {}
 variable vm_admin_username {}
 variable vm_public_key {}
 

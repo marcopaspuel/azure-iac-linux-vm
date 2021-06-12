@@ -26,7 +26,7 @@ module "network" {
   address_space         = var.address_space
   location              = var.location
   virtual_network_name  = var.virtual_network_name
-  webapp_name           = var.webapp_name
+  vm_name               = var.vm_name
   resource_type         = "NET"
   resource_group        = module.resource_group.resource_group_name
   address_prefix_test   = var.address_prefix_test
@@ -36,7 +36,7 @@ module "network" {
 module "nsg-test" {
   source                = "../../modules/networksecuritygroup"
   location              = var.location
-  webapp_name           = var.webapp_name
+  vm_name               = var.vm_name
   resource_type         = "NSG"
   resource_group        = module.resource_group.resource_group_name
   subnet_id             = module.network.subnet_id_test
@@ -44,19 +44,10 @@ module "nsg-test" {
   project               = var.project
 }
 
-module "appservice" {
-  source           = "../../modules/appservice"
-  location         = var.location
-  webapp_name      = var.webapp_name
-  resource_type    = "AppService"
-  resource_group   = module.resource_group.resource_group_name
-  project          = var.project
-}
-
 module "publicip" {
   source           = "../../modules/publicip"
   location         = var.location
-  webapp_name      = var.webapp_name
+  vm_name          = var.vm_name
   resource_type    = "publicip"
   resource_group   = module.resource_group.resource_group_name
   project          = var.project
@@ -66,7 +57,7 @@ module "vm" {
   source               = "../../modules/vm"
   location             = var.location
   resource_group       = module.resource_group.resource_group_name
-  webapp_name          = var.webapp_name
+  vm_name              = var.vm_name
   resource_type        = "vm"
   subnet_id            = module.network.subnet_id_test
   public_ip_address_id = module.publicip.public_ip_address_id
