@@ -19,7 +19,7 @@ resource "azurerm_linux_virtual_machine" "test" {
   name                = "${var.vm_name}-${var.resource_type}"
   location            = var.location
   resource_group_name = var.resource_group
-  size                = "Standard_B1s"
+  size                = var.vm_size
   admin_username      = var.vm_admin_username
   network_interface_ids = [azurerm_network_interface.test.id]
   admin_ssh_key {
@@ -27,7 +27,8 @@ resource "azurerm_linux_virtual_machine" "test" {
     public_key = file(var.vm_public_key)
   }
   os_disk {
-    caching           = "ReadWrite"
+    name                 = "OsDisk"
+    caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
   source_image_reference {

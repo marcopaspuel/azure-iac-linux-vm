@@ -58,6 +58,7 @@ module "vm" {
   location             = var.location
   resource_group       = module.resource_group.resource_group_name
   vm_name              = var.vm_name
+  vm_size              = var.vm_size
   resource_type        = "vm"
   subnet_id            = module.network.subnet_id_test
   public_ip_address_id = module.publicip.public_ip_address_id

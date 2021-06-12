@@ -15,6 +15,7 @@ variable address_space {}
 
 # Virtual Machine
 variable "vm_name" {}
+variable "vm_size" {}
 variable vm_admin_username {}
 variable vm_public_key {}
 

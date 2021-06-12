@@ -6,6 +6,7 @@ variable "subnet_id" {}
 
 
 variable "vm_name" {}
+variable "vm_size" {}
 variable "resource_type" {}
 
 variable "vm_admin_username" {}
