@@ -13,14 +13,14 @@ az account set --subscription="SUBSCRIPTION_ID"
 ```
 Create Service Principle
 ``` bash
-az ad sp create-for-rbac --name ensuring-quality-releases-sp --role="Contributor" --scopes="/subscriptions/SUBSCRIPTION_ID"
+az ad sp create-for-rbac --name azure-iac-linux-vm-sp --role="Contributor" --scopes="/subscriptions/SUBSCRIPTION_ID"
 ```
 This command will output 5 values:
 ``` json
 {
   "appId": "00000000-0000-0000-0000-000000000000",
-  "displayName": "azure-cli-2017-06-05-10-41-15",
-  "name": "http://azure-cli-2017-06-05-10-41-15",
+  "displayName": "azure-iac-linux-vm-sp",
+  "name": "http://azure-iac-linux-vm-sp",
   "password": "0000-0000-0000-0000-000000000000",
   "tenant": "00000000-0000-0000-0000-000000000000"
 }
@@ -34,10 +34,10 @@ Change the parameters based on the output of the previous command. These values 
 
 ##### 1.2. Configure the storage account and state backend
 To [configure the storage account and state backend](https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage)
-run the bash script [config_storage_account.sh](terraform/config_storage_account.sh) providing
+run the bash script [config_storage_account.sh](config_storage_account.sh) providing
 a resource group name, and a desired location. 
 ``` bash 
-./terraform/config_storage_account.sh -g "RESOURCE_GROUP_NAME" -l "LOCATION"
+./config_storage_account.sh -g "RESOURCE_GROUP_NAME" -l "LOCATION"
 ```
 This script will output 3 values:
 ``` bash 
@@ -45,7 +45,7 @@ storage_account_name: tstate$RANDOM
 container_name: tstate
 access_key: 0000-0000-0000-0000-000000000000
 ```
-Replace the `RESOURCE_GROUP_NAME` and `storage_account_name` in the [terraform/environments/test/main.tf](terraform/environments/test/main.tf)
+Replace the `RESOURCE_GROUP_NAME` and `storage_account_name` in the [terraform/environments/staging/main.tf](terraform/environments/staging/main.tf)
 file and the `access_key` in the `.azure_envs.sh` script.
 ```
 terraform {
@@ -57,20 +57,11 @@ terraform {
     }
 }
 ```
+You will also need to add the access key in the `.azure_envs.sh` file.
 ```
 export ARM_ACCESS_KEY="access_key"
 ```
-You will also need to replace this values in the [azure-pipelines.yaml](.devops/pipelines/azure-pipelines.yaml) file.
-```
-backendAzureRmResourceGroupName: "RESOURCE_GROUP_NAME"
-backendAzureRmStorageAccountName: 'tstate$RANDOM'
-backendAzureRmContainerName: 'tstate'
-backendAzureRmKey: 'terraform.tfstate'
-```
-To source this values in your local environment run the following command:
+Source this values in your local environment by running the following command:
 ```
 source .azure_envs.sh
 ```
-NOTE: The values set in `.azure_envs.sh` are required to run terraform commands from your local environment.
-There is no need to run this script if terraform runs in Azure Pipelines.
-
