@@ -134,13 +134,13 @@ ssh -o "IdentitiesOnly=yes" -i ~/.ssh/az_linux_vm_id_rsa marco@PublicIP
 ### Clean Up
 To delete all the resources created by terraform you can use the following command:
 ``` bash
-    terraform destroy
+terraform destroy
 ```
 To delete the resource group created in step 2 run the following command:
 ``` bash
-    az group delete --no-wait --name "RESOURCE_GROUP_NAME"
+az group delete --no-wait --name "RESOURCE_GROUP_NAME"
 ```
 To delete the Service Principal Created in step 1 run the following command:
 ``` bash
-    az ad sp delete --id 00000000-0000-0000-0000-000000000000
+az ad sp delete --id 00000000-0000-0000-0000-000000000000
 ```
