@@ -27,9 +27,10 @@ resource "azurerm_linux_virtual_machine" "test" {
     public_key = file(var.vm_public_key)
   }
   os_disk {
-    name                 = "OsDisk"
+    name                 = "${var.vm_name}-OsDisk"
     caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
+    storage_account_type = var.storage_account_type
+    disk_size_gb         = var.disk_size_gb
   }
   source_image_reference {
     publisher = "Canonical"

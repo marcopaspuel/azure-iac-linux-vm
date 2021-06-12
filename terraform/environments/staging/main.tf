@@ -29,7 +29,7 @@ module "network" {
   vm_name               = var.vm_name
   resource_type         = "NET"
   resource_group        = module.resource_group.resource_group_name
-  address_prefix_test   = var.address_prefix_test
+  address_prefixes      = var.address_prefixes
   project               = var.project
 }
 
@@ -40,7 +40,7 @@ module "nsg-test" {
   resource_type         = "NSG"
   resource_group        = module.resource_group.resource_group_name
   subnet_id             = module.network.subnet_id_test
-  address_prefix_test   = var.address_prefix_test
+  address_prefixes      = var.address_prefixes
   project               = var.project
 }
 
@@ -64,5 +64,7 @@ module "vm" {
   public_ip_address_id = module.publicip.public_ip_address_id
   vm_admin_username    = var.vm_admin_username
   vm_public_key        = var.vm_public_key
+  storage_account_type = var.storage_account_type
+  disk_size_gb         = var.disk_size_gb
   project              = var.project
 }

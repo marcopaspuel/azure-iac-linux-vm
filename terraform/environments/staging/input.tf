@@ -10,14 +10,18 @@ variable "resource_group" {}
 
 # Network
 variable virtual_network_name {}
-variable "address_prefix_test" {}
 variable address_space {}
+variable "address_prefixes" {}
 
 # Virtual Machine
 variable "vm_name" {}
 variable "vm_size" {}
 variable vm_admin_username {}
 variable vm_public_key {}
+
+# Virtual Machine Disk
+variable "storage_account_type" {}
+variable "disk_size_gb" {}
 
 # Tags
 variable "project" {}

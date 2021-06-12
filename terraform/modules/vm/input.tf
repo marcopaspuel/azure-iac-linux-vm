@@ -12,5 +12,8 @@ variable "resource_type" {}
 variable "vm_admin_username" {}
 variable "vm_public_key" {}
 
+variable "storage_account_type" {}
+variable "disk_size_gb" {}
+
 # Tags
 variable "project" {}

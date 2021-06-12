@@ -7,7 +7,7 @@ variable virtual_network_name {}
 variable address_space {}
 variable "vm_name" {}
 variable "resource_type" {}
-variable "address_prefix_test" {}
+variable "address_prefixes" {}
 
 # Tags
 variable "project" {}
