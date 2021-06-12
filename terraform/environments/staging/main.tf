@@ -50,6 +50,7 @@ module "publicip" {
   vm_name          = var.vm_name
   resource_type    = "publicip"
   resource_group   = module.resource_group.resource_group_name
+  public_ip_sku    = var.public_ip_sku
   project          = var.project
 }
 

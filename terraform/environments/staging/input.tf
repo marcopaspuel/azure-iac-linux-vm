@@ -23,5 +23,8 @@ variable vm_public_key {}
 variable "storage_account_type" {}
 variable "disk_size_gb" {}
 
+# Public IP
+variable "public_ip_sku" {}
+
 # Tags
 variable "project" {}

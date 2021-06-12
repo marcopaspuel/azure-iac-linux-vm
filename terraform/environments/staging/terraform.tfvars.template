@@ -22,5 +22,8 @@ virtual_network_name = "azure-iac-linux-vm-net"
 address_space = ["10.0.0.0/16"]
 address_prefixes = ["10.0.1.0/24"]
 
+# Public IP
+public_ip_sku = "Basic"
+
 # Tags
 project = "azure-iac-linux-vm"
