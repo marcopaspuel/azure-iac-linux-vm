@@ -6,17 +6,21 @@ tenant_id="00000000-0000-0000-0000-000000000000"
 
 # Resource Group/Location
 location = "westeurope"
-resource_group = "ensuring-quality-releases-rg"
-application_type = "ensuring-quality-releases-webapi"
+resource_group = "azure-iac-linux-vm-resources"
 
 # VM
+vm_name = "azure-iac-linux"
+vm_size = "Standard_B1s"
 vm_admin_username = "marco"
-vm_public_key = "~/.ssh/az_eqr_id_rsa.pub"
+vm_public_key = "~/.ssh/az_linux_vm_id_rsa.pub"
+# VM Disk
+storage_account_type = "Standard_LRS"
+disk_size_gb = "50"
 
 # Network
-virtual_network_name = "eqr-virtual-net"
-address_space = ["10.5.0.0/16"]
-address_prefix_test = "10.5.1.0/24"
+virtual_network_name = "azure-iac-linux-vm-net"
+address_space = ["10.0.0.0/16"]
+address_prefixes = ["10.0.1.0/24"]
 
 # Tags
-project = "ensuring-quality-releases"
+project = "azure-iac-linux-vm"
