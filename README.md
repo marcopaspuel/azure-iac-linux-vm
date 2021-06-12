@@ -109,3 +109,12 @@ terraform apply "solution.plan"
 If everything runs correctly you should be able to see the resources been created. You can also check the creation of 
 the resources in the [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) under <br/>
 `Home > Resource groups > "RESOURCE_GROUP_NAME"`
+
+### Connect to the Virtual Machine from your local terminal
+First, find the public IP of the newly created Linux VM. The public IP can be found in the Azure Portal under
+`Home > Resource groups > "RESOURCE_GROUP_NAME" > "Virtual machine"`
+
+Then, use the ssh key created in step 1.3 of this guide to connect to the VM with the following command.
+``` bash
+ssh -o "IdentitiesOnly=yes" -i ~/.ssh/az_linux_vm_id_rsa marco@PublicIP
+```
