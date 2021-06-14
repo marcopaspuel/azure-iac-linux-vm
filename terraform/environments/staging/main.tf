@@ -3,12 +3,18 @@ provider "azurerm" {
   subscription_id = var.subscription_id
   client_id       = var.client_id
   client_secret   = var.client_secret
+
   features {}
 }
 
 terraform {
-  backend "azurerm" {
-  }
+    required_providers {
+      azurerm = {
+        source  = "hashicorp/azurerm"
+        version = ">= 2.0"
+      }
+    }
+  backend "azurerm" {}
 }
 
 module "resource_group" {
