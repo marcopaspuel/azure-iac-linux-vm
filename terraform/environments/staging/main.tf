@@ -8,10 +8,6 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = "azure-iac-linux-vm-rg"
-    storage_account_name = "tstate6257"
-    container_name       = "tstate"
-    key                  = "terraform.tfstate"
   }
 }
 
