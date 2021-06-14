@@ -6,10 +6,8 @@ tfstateAccountKey=$(az storage account keys list --resource-group ${tfstateRg} -
 tfstateContainer='tstate'
 tfstateKeyName='key=terraform.tfstate'
 
-# Generate SSH keys (This will overwrite any existing key called 'id_rsa')
-yes y | ssh-keygen -t rsa -b 2048 -N "" -f ~/.ssh/id_rsa
 
-### Deploy AKS Solution
+### Deploy Linux VM
 # Initialise solution
 terraform init \
     -backend-config="storage_account_name=${tfstateAccountName}" \
@@ -21,12 +19,13 @@ terraform init \
 terraform validate
 
 # Plan solution deployment
-planName='aks-cluster.plan'
+planName='linux-vm.plan'
 terraform plan -out=${planName}
 
 # Deploy solution
 terraform apply -auto-approve ${planName}
 
-# Get kube-config
-kubeConfigName='config'
-echo "$(terraform output kube_config)" > $HOME/.kube/${kubeConfigName}
+# Get public IP address
+linuxVmRg='azure-iac-linux-vm-resources'
+vmName='azure-iac-linux-vm'
+az vm show --resource-group $linuxVmRg --name $vmName -d --query [publicIps] -o tsv
