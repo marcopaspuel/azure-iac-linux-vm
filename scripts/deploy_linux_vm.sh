@@ -1,3 +1,4 @@
+#!/bin/bash
 # Exit if something fails
 set -euo pipefail
 
