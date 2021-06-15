@@ -4,6 +4,9 @@
 # Reset in case getopts has been used previously in the shell.
 OPTIND=1
 
+# Exit if something fails
+set -euo pipefail
+
 usage() { echo "Please specify: -g <Resource Group> -l <Location>"; }
 
 # Get and assign the arguments set by the user
