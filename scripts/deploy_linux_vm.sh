@@ -1,3 +1,6 @@
+# Exit if something fails
+set -euo pipefail
+
 # Get Remote State Storage Account details
 tfstateRg='azure-iac-linux-vm-rg'
 tfstateAccount=$(az storage account list --resource-group ${tfstateRg} | jq .[0])
