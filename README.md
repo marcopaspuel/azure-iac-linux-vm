@@ -48,39 +48,15 @@ Change the parameters based on the output of the previous command. These values 
 
 #### 2. Configure the storage account and state backend
 To [configure the storage account and state backend](https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage)
-run the bash script [config_storage_account.sh](config_storage_account.sh) providing
+run the bash script [config_storage_account.sh](scripts/config_storage_account.sh) providing
 a resource group name, and a desired location. 
-``` bash 
+``` bash
+cd scripts
 ./config_storage_account.sh -g "RESOURCE_GROUP_NAME" -l "LOCATION"
 ```
-This script will output 3 values:
-``` bash 
-storage_account_name: tstate$RANDOM
-container_name: tstate
-access_key: 0000-0000-0000-0000-000000000000
-```
-Replace the `RESOURCE_GROUP_NAME` and `storage_account_name` in the [terraform/environments/staging/main.tf](terraform/environments/staging/main.tf)
-file and the `access_key` in the `.azure_envs.sh` script.
-```
-terraform {
-    backend "azurerm" {
-        resource_group_name  = "RESOURCE_GROUP_NAME"
-        storage_account_name = "tstate$RANDOM"
-        container_name       = "tstate"
-        key                  = "terraform.tfstate"
-    }
-}
-```
-You will also need to add the access key in the `.azure_envs.sh` file.
-```
-export ARM_ACCESS_KEY="access_key"
-```
-Source this values in your local environment by running the following command:
-```
-source .azure_envs.sh
-```
 
-#### 3. Create an SSH key for authentication to a Linux VM in Azure
+### Deploy Virtual Machine
+#### 1. Create an SSH key for authentication to a Linux VM in Azure
 To generate a public private key pair run the following commands (passphrase is optional):
 ``` bash
 cd ~/.ssh/
