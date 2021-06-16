@@ -77,7 +77,7 @@ to the newly created file. Change the values based on the outputs of the previou
 #### 2. Deploy the infrastructure from your local environment with Terraform
 To deploy the terraform infrastructure run the following command
 ``` bash
-terraform plan -out solution.plan
+./deploy_linux_vm.sh
 ```
 After running the plan you should be able to see all the resources that will be created.
 
