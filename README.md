@@ -39,12 +39,12 @@ This command will output 5 values:
   "tenant": "00000000-0000-0000-0000-000000000000"
 }
 ``` 
-Create an `.azure_envs.sh` file inside the project directory and copy the content of the `.azure_envs.sh.template` to the newly created file.
-Change the parameters based on the output of the previous command. These values map to the `.azure_envs.sh` variables like so:
+Create an `terraform.tfvars` file inside the terraform directory and copy the content of the `terraform.tfvars.template` to the newly created file.
+Change the parameters based on the output of the previous command. These values map to the variables like so:
 
-    appId is the ARM_CLIENT_ID
-    password is the ARM_CLIENT_SECRET
-    tenant is the ARM_TENANT_ID
+    appId is the client_id
+    password is the client_secret
+    tenant is the tenant_id
 
 #### 2. Configure the storage account and state backend
 To [configure the storage account and state backend](https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage)
