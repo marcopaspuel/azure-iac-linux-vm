@@ -79,13 +79,6 @@ To deploy the terraform infrastructure run the following command
 ``` bash
 ./deploy_linux_vm.sh
 ```
-After running the plan you should be able to see all the resources that will be created.
-
-Run Terraform apply to deploy the infrastructure.
-``` bash
-terraform apply "solution.plan"
-```
-
 If everything runs correctly you should be able to see the resources been created. You can also check the creation of 
 the resources in the [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) under <br/>
 `Home > Resource groups > "RESOURCE_GROUP_NAME"`
