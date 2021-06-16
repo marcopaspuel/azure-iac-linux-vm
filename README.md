@@ -15,6 +15,8 @@ This project contains a Terraform template to deploy a customizable linux vm in 
 3. Log into the [Azure Portal](https://portal.azure.com)
 
 ### Installation & Configuration
+Note: To create a service principal (step 1), and the storage account(step 2) you need special permissions, and it needs to be done only once.
+If you don't have the required permissions please ask the sysadmin.
 #### 1. Create a Service Principal for Terraform
 Log into your Azure account
 ``` bash
@@ -134,6 +136,7 @@ ssh -o "IdentitiesOnly=yes" -i ~/.ssh/az_linux_vm_id_rsa marco@PublicIP
 ### Clean Up
 To delete all the resources created by terraform you can use the following command:
 ``` bash
+cd terraform
 terraform destroy
 ```
 To delete the resource group created in step 2 run the following command:
