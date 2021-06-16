@@ -74,18 +74,8 @@ For additional information of how to create and use SSH keys, click on the links
 Create a `terraform.tfvars` file inside the [staging](terraform/environments/staging) directory and copy the content of the [terraform.tfvars.template](terraform/environments/staging/terraform.tfvars.template)
 to the newly created file. Change the values based on the outputs of the previous steps.
 
-- The `subscription_id`, `client_id`, `client_secret`, and `tenant_id` can be found in the `.azure_envs.sh` file. 
-- Set your desired `location` and `resource_group` for the infrastructure.
-- Ensure that the public key name `vm_public_key` is the same as the one created in step 3. of this guide.
-
-#### 5. Deploy the infrastructure from your local environment with Terraform
-Run Terraform plan 
-``` bash
-cd terraform/environments/staging
-```
-``` bash
-terraform init
-```
+#### 2. Deploy the infrastructure from your local environment with Terraform
+To deploy the terraform infrastructure run the following command
 ``` bash
 terraform plan -out solution.plan
 ```
