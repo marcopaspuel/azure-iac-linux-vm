@@ -95,7 +95,6 @@ ssh -o "IdentitiesOnly=yes" -i ~/.ssh/az_linux_vm_id_rsa marco@PublicIP
 ### Clean Up
 To delete all the resources created by terraform you can use the following command:
 ``` bash
-cd terraform
 terraform destroy
 ```
 To delete the resource group created in step 2 run the following command:
